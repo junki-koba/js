@@ -6,11 +6,8 @@
   const stop = document.getElementById('stop');
   const reset = document.getElementById('reset');
   const math = document.getElementById('sum');
-  const mintus = document.getElementById('mintus');
-  // const time = document.form.mintus;
-  // const timeselect = time.selectedIndex;
-  // const str = time.option[timeselect].value;
-  const timeselect = document.querySelector('.mintus')
+  // const mintus = document.getElementById('mintus');
+  // const timeselect = document.querySelector('.mintus')
 
   let startTime;
   let timeoutId;
@@ -46,9 +43,11 @@
     reset.disabled = false;
   }
 
-  function math1() {
-    console.log("動作しました");
-   
+  // 残り時間の計算
+  function calculation() {
+    const timeselect = document.getElementById('mintus');
+    const timeresult = timeselect.value;
+    console.log(timeresult);
   }
 
   setButtonStateInitial();
@@ -75,32 +74,6 @@
   math.addEventListener('click', () => {
     stop.click();
     let timeTxt = timer.textContent.replace(":", "").replace(".", "");
-    // mintus.addEventListener('change',function() {
-    // });
-    math1() ;
-      // const timeresult = timeselect;
-      // switch (timeresult) {
-      //   case "time_1":
-      //     const a =180000 - timeTxt;
-      //     console.log(a)
-      //     break;
-      //     case "time_2":
-      //       const b =360000 - timeTxt;
-      //       console.log(b)
-      //       break;
-      //       case  "time_3":
-      //         const c =540000 - timeTxt;
-      //         console.log(c);
-      //         break;
-      //       } 
-
-  
-    // console.log(timeTxt - 180000);
-    // const t1 = timer.textContent.replace(":","");
-    // setTimeout (() => {
-    //   const t2 = document.getElementById("mintus");
-    //   const timeresult = timeTxt - t2;
-    //   console.log(timeresult);
-    // },1000);
+    calculation() ;
   });
 }
