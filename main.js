@@ -6,6 +6,8 @@
   const stop = document.getElementById('stop');
   const reset = document.getElementById('reset');
   const math = document.getElementById('sum');
+  const mintus = document.getElementById('mintus');
+  const sum_account = document.getElementById('sum_account');
 
   let startTime;
   let timeoutId;
@@ -43,26 +45,24 @@
 
   // 残り時間の計算
   function calculateRemaining() {
-    const mintus = document.getElementById('mintus');
     let timeTxt = timer.textContent.replace(":", "").replace(".", "");
     const timeresult = mintus.value;
     switch(timeresult) {
       case 'time_1':
          const result1 = 3000000 - timeTxt;
-         console.log(result1);
+         sum_account.value = result1;
          break;
       case 'time_2':
         const result2 = 6000000 - timeTxt;
-        console.log(result2);
+        sum_account.value = result2;
         break;
       case 'time_3':
         const result3 = 9000000 - timeTxt;
-        console.log(result3);
+        sum_account.value = result3;
         break;
-    }
-    const fact = result1&&result2&&result3;
-
+      }
   }
+
 
   setButtonStateInitial();
 
