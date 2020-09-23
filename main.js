@@ -6,8 +6,6 @@
   const stop = document.getElementById('stop');
   const reset = document.getElementById('reset');
   const math = document.getElementById('sum');
-  // const mintus = document.getElementById('mintus');
-  // const timeselect = document.querySelector('.mintus')
 
   let startTime;
   let timeoutId;
@@ -44,10 +42,26 @@
   }
 
   // 残り時間の計算
-  function calculation() {
-    const timeselect = document.getElementById('mintus');
-    const timeresult = timeselect.value;
-    console.log(timeresult);
+  function calculateRemaining() {
+    const mintus = document.getElementById('mintus');
+    let timeTxt = timer.textContent.replace(":", "").replace(".", "");
+    const timeresult = mintus.value;
+    switch(timeresult) {
+      case 'time_1':
+         const result1 = 3000000 - timeTxt;
+         console.log(result1);
+         break;
+      case 'time_2':
+        const result2 = 6000000 - timeTxt;
+        console.log(result2);
+        break;
+      case 'time_3':
+        const result3 = 9000000 - timeTxt;
+        console.log(result3);
+        break;
+    }
+    const fact = result1&&result2&&result3;
+
   }
 
   setButtonStateInitial();
@@ -74,6 +88,6 @@
   math.addEventListener('click', () => {
     stop.click();
     let timeTxt = timer.textContent.replace(":", "").replace(".", "");
-    calculation() ;
+    calculateRemaining() ;
   });
 }
