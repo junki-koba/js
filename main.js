@@ -49,8 +49,9 @@
     const timeresult = mintus.value;
     switch(timeresult) {
       case 'time_1':
-         const result1 = 3000000 - timeTxt;
-
+        const result1 = 3000000 - timeTxt;
+        result1.match(/^(\d+):(\d+.\d+)$/);
+        console.log(result1);
          sum_account.innerHTML = result1;
          break;
       case 'time_2':
@@ -64,7 +65,7 @@
       }
   }
 
-  
+
 
   setButtonStateInitial();
 
@@ -86,7 +87,7 @@
     elapsedTime = 0;
   });
 
- 
+
   math.addEventListener('click', () => {
     let timeTxt = timer.textContent.replace(":", "").replace(".", "");
     stop.click();
