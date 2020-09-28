@@ -1,6 +1,8 @@
 'use strict';
 
 {
+
+
   const timer = document.getElementById('timer');
   const start = document.getElementById('start');
   const stop = document.getElementById('stop');
@@ -43,16 +45,17 @@
     stop.disabled = true;
     reset.disabled = false;
   }
-
+ var correct = [];
   // 残り時間の計算
   function calculateRemaining(timeTxt) {
     const timeresult = mintus.value;
     switch(timeresult) {
       case 'time_1':
-        const result1 = 3000000 - timeTxt;
-        result1.match(/^(\d+):(\d+.\d+)$/);
-        console.log(result1);
-         sum_account.innerHTML = result1;
+        const result1 = String(3000000 - timeTxt);
+        const w = /(\d{2})(\d{2})(\d{3})/;
+        const s  = result1.replace(w,'$1:$2.$3');
+        console.log(s);
+        sum_account.innerHTML = s;
          break;
       case 'time_2':
         const result2 = 6000000 - timeTxt;
@@ -89,6 +92,7 @@
 
 
   math.addEventListener('click', () => {
+
     let timeTxt = timer.textContent.replace(":", "").replace(".", "");
     stop.click();
     calculateRemaining(timeTxt);
