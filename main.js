@@ -52,18 +52,21 @@
     switch(timeresult) {
       case 'time_1':
         const result1 = String(3000000 - timeTxt);
-        const w = /(\d{2})(\d{2})(\d{3})/;
-        const s  = result1.replace(w,'$1:$2.$3');
-        console.log(s);
-        sum_account.innerHTML = s;
+        const regular1 = /(\d{2})(\d{2})(\d{3})/;
+        const timemath1  = result1.replace(regular1,'$1分$2秒$3');
+        sum_account.innerHTML = timemath1;
          break;
       case 'time_2':
-        const result2 = 6000000 - timeTxt;
-        sum_account.innerHTML = result2;
+        const result2 = String(6000000 - timeTxt);
+        const regular2 = /(\d{2})(\d{2})(\d{3})/;
+        const timemath2 = result2.replace(regular2,'$1分$2秒$3');
+        sum_account.innerHTML = timemath2;
         break;
       case 'time_3':
-        const result3 = 9000000 - timeTxt;
-        sum_account.innerHTML = result3;
+        const result3 = String(9000000 - timeTxt);
+        const regular3 = /(\d{2})(\d{2})(\d{3})/;
+        const timemath3 = result3.replace(regular3,'$1分$2秒$3');
+        sum_account.innerHTML = timemath3;
         break;
       }
   }
