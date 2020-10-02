@@ -45,34 +45,32 @@
     stop.disabled = true;
     reset.disabled = false;
   }
- var correct = [];
+
   // 残り時間の計算
   function calculateRemaining(timeTxt) {
     const timeresult = mintus.value;
     switch(timeresult) {
       case 'time_1':
         const result1 = String(3000000 - timeTxt);
-        const regular1 = /(\d{2})(\d{2})(\d{3})/;
-        const timemath1  = result1.replace(regular1,'$1分$2秒$3');
-        sum_account.innerHTML = timemath1;
+        reguler(result1);
          break;
       case 'time_2':
         const result2 = String(6000000 - timeTxt);
-        const regular2 = /(\d{2})(\d{2})(\d{3})/;
-        const timemath2 = result2.replace(regular2,'$1分$2秒$3');
-        sum_account.innerHTML = timemath2;
+        reguler(result2);
         break;
       case 'time_3':
         const result3 = String(9000000 - timeTxt);
-        const regular3 = /(\d{2})(\d{2})(\d{3})/;
-        const timemath3 = result3.replace(regular3,'$1分$2秒$3');
-        sum_account.innerHTML = timemath3;
+        reguler(result3);
         break;
       }
   }
-
-
-
+    //正規表現
+    function reguler(regular) {
+        const regulation = /(\d{2})(\d{2})(\d{3})/;
+        const timemath = regular.replace(regulation,'$1分$2秒$3');
+        sum_account.innerHTML = timemath;
+    }
+  
   setButtonStateInitial();
 
   start.addEventListener('click', () => {
@@ -95,7 +93,6 @@
 
 
   math.addEventListener('click', () => {
-
     let timeTxt = timer.textContent.replace(":", "").replace(".", "");
     stop.click();
     calculateRemaining(timeTxt);
