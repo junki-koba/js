@@ -47,7 +47,8 @@
   }
 
   // 残り時間の計算
-  function calculateRemaining(timeTxt) {
+  function calculateRemaining() {
+    let timeTxt = timer.textContent.replace(":", "").replace(".", "");
     const timeresult = mintus.value;
     switch(timeresult) {
       case 'time_1':
@@ -93,8 +94,7 @@
 
 
   math.addEventListener('click', () => {
-    let timeTxt = timer.textContent.replace(":", "").replace(".", "");
     stop.click();
-    calculateRemaining(timeTxt);
+    calculateRemaining();
   });
 }
