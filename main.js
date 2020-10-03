@@ -1,16 +1,20 @@
 'use strict';
 
 {
+
+
   const timer = document.getElementById('timer');
   const start = document.getElementById('start');
   const stop = document.getElementById('stop');
   const reset = document.getElementById('reset');
-  const math = document.getElementById('sum');
   const mintus = document.getElementById('mintus');
+  const math = document.getElementById('sum');
+  const sum_account = document.getElementById('sum_account');
 
   let startTime;
   let timeoutId;
   let elapsedTime = 0;
+
 
   function countUp() {
     const d = new Date(Date.now() - startTime + elapsedTime);
@@ -42,6 +46,32 @@
     reset.disabled = false;
   }
 
+  // 残り時間の計算
+  function calculateRemaining() {
+    let timeTxt = timer.textContent.replace(":", "").replace(".", "");
+    const timeresult = mintus.value;
+    switch(timeresult) {
+      case 'time_1':
+        const result1 = String(3000000 - timeTxt);
+        reguler(result1);
+         break;
+      case 'time_2':
+        const result2 = String(6000000 - timeTxt);
+        reguler(result2);
+        break;
+      case 'time_3':
+        const result3 = String(9000000 - timeTxt);
+        reguler(result3);
+        break;
+      }
+  }
+    //正規表現
+    function reguler(regular) {
+        const regulation = /(\d{2})(\d{2})(\d{3})/;
+        const timemath = regular.replace(regulation,'$1分$2秒$3');
+        sum_account.innerHTML = timemath;
+    }
+  
   setButtonStateInitial();
 
   start.addEventListener('click', () => {
@@ -62,29 +92,9 @@
     elapsedTime = 0;
   });
 
- 
+
   math.addEventListener('click', () => {
     stop.click();
-    let timeTxt = timer.textContent.replace(":", "").replace(".", "");
-    let timeresult = "#time1"||"#time2"||"#time3";
-    switch (timeresult) {
-        case "#time1":
-            timeTxt - 180000;
-            break;
-        case "#time2":
-            timeTxt - 360000;
-            break;
-        case "#time3":
-            timeTxt - 540000;
-            break;
-    } 
-
-    console.log(timeresult);
-    // const t1 = timer.textContent.replace(":","");
-    // setTimeout (() => {
-    //   const t2 = document.getElementById("mintus");
-    //   const timeresult = timeTxt - t2;
-    //   console.log(timeresult);
-    // },1000);
+    calculateRemaining();
   });
 }
